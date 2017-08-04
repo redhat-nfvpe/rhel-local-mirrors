@@ -1,0 +1,23 @@
+# vim: set ft=ansible
+# site.yml
+---
+
+- hosts: rhel_mirrors
+  become: true
+  tags:
+    - rhel_register
+  vars_files:
+    - "./vars/main.yml"
+    - ~/.ansible/vars/rhel_local_mirrors_vars.yml
+  vars:
+    sudo_defaults:
+      - defaults: '!requiretty'
+  tasks:
+    - include: rhel_register.yml
+      when: subscribe_rhn|bool == True
+      tags:
+        - rhel_register
+    - include: prepare_system.yml
+      tags:
+        - prepare_system
+    
