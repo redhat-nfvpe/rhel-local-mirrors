@@ -21,6 +21,7 @@
       username: "{{ rhn_subscription_username }}"
       password: "{{ rhn_subscription_password }}"
       autosubscribe: false
+      pool: "{{ rhn_subscription_pool_id }}"
   become: true
   changed_when: false
 
