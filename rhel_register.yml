@@ -5,6 +5,18 @@
         rhn_subscription_password is undefined or
         rhn_subscription_pool_id is undefined
 
+
+- name: Initialize repo list
+  set_fact:
+    temp_repos: "{{ repos|map(attribute='items') | list }}"
+    rhn_repos: []
+
+- name: Combine repos
+  set_fact:
+    rhn_repos: "{{ rhn_repos | union(item) }}"
+  with_items:
+    - "{{ temp_repos }}"
+
 - name: Unsubscribe previous system
   redhat_subscription:
       state: absent
