@@ -1,0 +1,5 @@
+- name: Remove cronjob for autosync
+  cron:
+      name: "Cronjob to autosync RHEL repo"
+      state: absent
+  become: true

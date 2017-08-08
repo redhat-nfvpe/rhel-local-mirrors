@@ -23,4 +23,13 @@
     - include: create_mirror.yml
       tags:
         - create_mirror
+    - include: prepare_cron.yml
+      when: repo_autosync|bool == True
+      tags:
+        - prepare_cron
+
+    - include: remove_cron.yml
+      when: repo_autosync|bool == False
+      tags:
+        - prepare_cron
     

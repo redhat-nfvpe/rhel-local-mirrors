@@ -1,0 +1,11 @@
+- name: Prepare cronjob for autosync
+  cron:
+      day: "{{ crontab_day }}"
+      hour: "{{ crontab_hour }}"
+      minute: "{{ crontab_minute }}"
+      month: "{{ crontab_month }}"
+      weekday: "{{ crontab_weekday }}"
+      name: "Cronjob to autosync RHEL repo"
+      state: present
+      job: "reposync -l -n -p /var/ftp/pub/{{ repo_folder }}/ > /dev/null"
+  become: true

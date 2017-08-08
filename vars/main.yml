@@ -11,3 +11,9 @@ rhn_repos:
   - rhel-7-server-rhceph-2-tools-rpms
 repo_folder: osp_repo
 repo_name: osp.repo
+repo_autosync: false
+crontab_day: '*'
+crontab_hour: '*'
+crontab_minute: '*'
+crontab_month: '*'
+crontab_weekday: '*'

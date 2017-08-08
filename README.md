@@ -53,4 +53,18 @@ To limit the playbook to just create the mirrors, please executed with:
 
 Regular syncs of the repo are required in order to keep it up to date. You can trigger just
 the repo sync manually, executing the playbook with:
---tags sync_mirror 
+--tags sync_mirror
+
+Also you can setup a cronjob that will automatically trigger the repository
+synchronization on the schedule you decide. To enable it, you need to set the
+``repo_autosync`` var to True. To define the schedule for the cronjob, the following
+vars can be set:
+* crontab_day
+* crontab_hour
+* crontab_minute
+* crontab_month
+* crontab_weekday
+
+When setting ``repo_autosync`` var to False, the cronjob will be removed. In order
+to just setup the cronjob, you can execute the playbook with the ``prepare_cron`` tag.
+
