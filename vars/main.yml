@@ -9,3 +9,5 @@ rhn_repos:
   - rhel-7-server-rhceph-2-osd-rpms
   - rhel-7-server-rhceph-2-mon-rpms
   - rhel-7-server-rhceph-2-tools-rpms
+repo_folder: osp_repo
+repo_name: osp.repo

@@ -20,4 +20,7 @@
     - include: prepare_system.yml
       tags:
         - prepare_system
+    - include: create_mirror.yml
+      tags:
+        - create_mirror
     
