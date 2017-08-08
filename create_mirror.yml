@@ -1,6 +1,8 @@
 - block:
     - name: Mirror repository locally
       shell: "reposync -l -n -p /var/ftp/pub/{{ repo_folder }}/ > /dev/null"
+      tags:
+        - sync_repo
 
     - name: Create repositories from local mirror
       shell: "for DIR in `find /var/ftp/pub/{{ repo_folder }}  -maxdepth 1 -mindepth 1 -type d`; do createrepo $DIR; done; > /dev/null"
