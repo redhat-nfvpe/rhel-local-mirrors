@@ -45,7 +45,8 @@ mirrors being defined, using the `mirrors` var:
       folder: osp8_repo
       items:
         - repo_1
-        - repo_2```
+        - repo_2
+```
 
 It expects a list of repositories to be defined. Each of the repo items contains the
 following keywords:
