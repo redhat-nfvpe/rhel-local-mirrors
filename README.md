@@ -26,8 +26,8 @@ if you pass the right credentials:
 Subscription to the RHN system is enabled by default. If you want to disable it, you
 can set to False the `subscribe_rhn` var.
 
-If you need to limit the playbook to subscribe to your system, please run the playbook with:
-* --tags rhel_register
+If you need to limit the playbook to subscribe to your system, please run the playbook with
+--tags rhel_register
 
 ## System preparation
 
@@ -38,7 +38,7 @@ tasks tagged with `prepare_system` are executed.
 ## Mirror creation
 
 This playbook can create mirrors based on the subscribed repos. It relies on a list of
-mirrors being defined, using the `mirrors` var:
+mirrors being defined, using the `mirrors` var::
 
 mirrors:
   - name: osp8.repo
@@ -57,14 +57,13 @@ This format is useful when you need to define several mirrors on your system, fo
 For example, you coud create a mirror for OSP8 and another for OSP10, just adding the needed items to the
 list of mirrors, specifying all the repositories needed for each version.
 
-To limit the playbook to just create the mirrors, please executed with:
+To limit the playbook to just create the mirrors, please executed with
 --tags create_miror
 
 ## Repo synchronization
 
 Regular syncs of the repo are required in order to keep it up to date. You can trigger just
-the repo sync manually, executing the playbook with:
---tags sync_mirror
+the repo sync manually, executing the playbook with --tags sync_mirror
 
 Also you can setup a cronjob that will automatically trigger the repository
 synchronization on the schedule you decide. To enable it, you need to set the
