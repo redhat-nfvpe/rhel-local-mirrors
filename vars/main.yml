@@ -6,7 +6,7 @@ crontab_hour: '*'
 crontab_minute: '*'
 crontab_month: '*'
 crontab_weekday: '*'
-repos:
+mirrors:
   - name: osp8.repo
     folder: osp8_repo
     items:

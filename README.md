@@ -23,9 +23,8 @@ if you pass the right credentials:
 * rhn_subscription_password                                                     
 * rhn_subscription_pool_id
 
-Also the following vars are set by default:
-* subscribe_rhn: by default set to true, change if you want to skip the subscription step
-* rhn_repos: list, by default set to the OSP10 repos. Please update it if you want to allow more repos
+Subscription to the RHN system is enabled by default. If you want to disable it, you
+can set to False the `subscribe_rhn` var.
 
 If you need to limit the playbook to subscribe to your system, please run the playbook with:
 * --tags rhel_register
@@ -38,13 +37,25 @@ tasks tagged with `prepare_system` are executed.
 
 ## Mirror creation
 
-This playbook can create mirrors based on the subscribed repos. It is based on the previously
-specified `rhn_repos` setting, to create a local copy of these repos on the system.
+This playbook can create mirrors based on the subscribed repos. It relies on a list of
+mirrors being defined, using the `mirrors` var:
 
-The following vars are set by default:
-* repo_folder: The target folder where the repo will be created. By default it is `osp_repo`,
-creating the final repo in the /var/ftp/pub/osp_repo path
-* repo_name: The name of the repo that will be created. By default it is `osp.repo`
+mirrors:
+  - name: osp8.repo
+    folder: osp8_repo
+    items:
+      - repo_1
+      - repo_2
+
+It expects a list of repositories to be defined. Each of the repo items contains the
+following keywords:
+* name: Name of the repository to be created
+* folder: The final folder that will be used for the creation. It will create the repository under `/var/ftp/pub/<<folder>>` path
+* items: List of RedHat repositories to be enabled.
+
+This format is useful when you need to define several mirrors on your system, for different versions.
+For example, you coud create a mirror for OSP8 and another for OSP10, just adding the needed items to the
+list of mirrors, specifying all the repositories needed for each version.
 
 To limit the playbook to just create the mirrors, please executed with:
 --tags create_miror

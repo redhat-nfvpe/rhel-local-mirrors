@@ -8,7 +8,7 @@
 
 - name: Initialize repo list
   set_fact:
-    temp_repos: "{{ repos|map(attribute='items') | list }}"
+    temp_repos: "{{ mirrors|map(attribute='items') | list }}"
     rhn_repos: []
 
 - name: Combine repos
@@ -28,12 +28,7 @@
   become: true
 
 - name: Subscribe for RedHat systems
-  redhat_subscription:
-      state: present
-      username: "{{ rhn_subscription_username }}"
-      password: "{{ rhn_subscription_password }}"
-      autosubscribe: false
-      pool: "{{ rhn_subscription_pool_id }}"
+  command: "subscription-manager register --username={{ rhn_subscription_username }} --password={{ rhn_subscription_password }}"
   become: true
   changed_when: false
 
