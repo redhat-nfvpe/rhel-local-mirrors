@@ -40,12 +40,12 @@ tasks tagged with `prepare_system` are executed.
 This playbook can create mirrors based on the subscribed repos. It relies on a list of
 mirrors being defined, using the `mirrors` var::
 
-mirrors:
-  - name: osp8.repo
-    folder: osp8_repo
-    items:
-      - repo_1
-      - repo_2
+  mirrors:
+    - name: osp8.repo
+      folder: osp8_repo
+      items:
+        - repo_1
+        - repo_2
 
 It expects a list of repositories to be defined. Each of the repo items contains the
 following keywords:
