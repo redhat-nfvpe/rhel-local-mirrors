@@ -32,4 +32,3 @@
       when: repo_autosync|bool == False
       tags:
         - prepare_cron
-    
