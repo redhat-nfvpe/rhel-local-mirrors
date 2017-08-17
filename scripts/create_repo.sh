@@ -16,7 +16,7 @@ for DIR in `find ${REPOPATH}general_mirror/ -maxdepth 1 -mindepth 1 -type d`; do
     REPO_ITEM=$(basename $DIR)
     echo -e "[${REPO_ITEM}]" >> $REPOFILE
     echo -e "name=${REPO_ITEM}" >> $REPOFILE
-    echo -e "baseurl=ftp://${PUBLIC_ADDRESS}/pub/${REPO_FOLDER}/${REPO_ITEM}/" >> $REPOFILE
+    echo -e "baseurl=ftp://${PUBLIC_ADDRESS}/pub/general_mirror/${REPO_ITEM}/" >> $REPOFILE
 
     # only enable if repo is in the list
     if [[ "${REPO_ITEMS}" =~ "${REPO_ITEM}" ]]; then
