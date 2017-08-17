@@ -16,7 +16,7 @@
       with_items: "{{ mirrors }}"
 
     - name: Create repositories from local mirror
-      shell: "for DIR in `find /var/ftp/pub/{{ item['folder'] }}  -maxdepth 1 -mindepth 1 -type d`; do createrepo $DIR; done; > /dev/null"
+      shell: "for DIR in `find /var/ftp/pub/{{ item['folder'] }}  -maxdepth 1 -mindepth 1 -type l`; do createrepo $DIR; done; > /dev/null"
       with_items: "{{ mirrors }}"
 
     - name: Execute repository creation script
