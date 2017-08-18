@@ -14,4 +14,9 @@ mirrors:
         - rhel-7-server-extras-rpms
         - rhel-7-server-rh-common-rpms
         - rhel-ha-for-rhel-7-server-rpms
-
+nginx_vhosts:
+  - listen: "80 default_server"
+    server_name: "_"
+    root: "/var/www/mirrors"
+    state: present
+nginx_remove_default_vhost: true

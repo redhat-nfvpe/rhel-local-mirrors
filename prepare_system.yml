@@ -48,4 +48,10 @@
           state: enabled
           immediate: true
       when: firewalld_service_status.stdout == 'active'
+
+    - name: Create directory to contain mirrors
+      file:
+        path: "/var/www/mirrors"
+        state: directory
+        mode: 0755
   become: true
