@@ -20,3 +20,4 @@ nginx_vhosts:
     root: "/var/www/mirrors"
     state: present
 nginx_remove_default_vhost: true
+mirror_ip_address: ''

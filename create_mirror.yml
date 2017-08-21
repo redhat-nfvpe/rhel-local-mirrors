@@ -20,6 +20,6 @@
       with_items: "{{ mirrors }}"
 
     - name: Execute repository creation script
-      script: "./scripts/create_repo.sh {{ item['folder'] }} {{ item['name'] }} {{ item['items']|join(',') }}"
+      script: "./scripts/create_repo.sh {{ item['folder'] }} {{ item['name'] }} {{ item['items']|join(',') }} '{{ mirror_ip_address }}'"
       with_items: "{{ mirrors }}"
   become: true
