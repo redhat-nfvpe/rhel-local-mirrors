@@ -1,22 +1,22 @@
 - block:
     - name: Create a generic mirror with all repos
-      shell: "reposync -l -n -p /var/ftp/pub/general_mirror > /dev/null"
+      shell: "reposync -l -n -p /var/www/mirrors/general_mirror > /dev/null"
       tags:
         - sync_mirror
 
     - name: Create folder for the mirror
       file:
-        path: "/var/ftp/pub/{{ item['folder'] }}"
+        path: "/var/www/mirrors/{{ item['folder'] }}"
         state: directory
         mode: 0755
       with_items: "{{ mirrors }}"
 
     - name: Create symlink for the needed mirrors
-      shell: "ln -s /var/ftp/pub/general_mirror/* /var/ftp/pub/{{ item['folder'] }}/ || true"
+      shell: "ln -s /var/www/mirrors/general_mirror/* /var/www/mirrors/{{ item['folder'] }}/ || true"
       with_items: "{{ mirrors }}"
 
     - name: Create repositories from local mirror
-      shell: "for DIR in `find /var/ftp/pub/{{ item['folder'] }}  -maxdepth 1 -mindepth 1 -type l`; do createrepo $DIR; done; > /dev/null"
+      shell: "for DIR in `find /var/www/mirrors/{{ item['folder'] }}  -maxdepth 1 -mindepth 1 -type l`; do createrepo $DIR; done; > /dev/null"
       with_items: "{{ mirrors }}"
 
     - name: Execute repository creation script

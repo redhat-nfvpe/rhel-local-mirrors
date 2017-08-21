@@ -7,5 +7,5 @@
       weekday: "{{ crontab_weekday }}"
       name: "Cronjob to autosync RHEL repo"
       state: present
-      job: "reposync -l -n -p /var/ftp/pub/general_mirror/ > /dev/null"
+      job: "reposync -l -n -p /var/www/mirrors/general_mirror/ > /dev/null"
   become: true
