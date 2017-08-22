@@ -23,18 +23,13 @@ echo "${REPOPATH}${REPO_FOLDER}"
 
 for DIR in `find ${REPOPATH}general_mirror/ -maxdepth 1 -mindepth 1 -type d`; do
     REPO_ITEM=$(basename $DIR)
-    echo -e "[${REPO_ITEM}]" >> $REPOFILE
-    echo -e "name=${REPO_ITEM}" >> $REPOFILE
-    echo -e "baseurl=http://${PUBLIC_ADDRESS}/general_mirror/${REPO_ITEM}/" >> $REPOFILE
-
-    # only enable if repo is in the list
     if [[ "${REPO_ITEMS}" =~ "${REPO_ITEM}" ]]; then
-        echo -e "enabled=1" >> $REPOFILE
-    else
-        echo -e "enabled=0" >> $REPOFILE
+       echo -e "[${REPO_ITEM}]" >> $REPOFILE
+       echo -e "name=${REPO_ITEM}" >> $REPOFILE
+       echo -e "baseurl=http://${PUBLIC_ADDRESS}/general_mirror/${REPO_ITEM}/" >> $REPOFILE
+       echo -e "enabled=1" >> $REPOFILE
+       echo -e "gpgcheck=1" >> $REPOFILE
+       echo -e "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release" >> $REPOFILE
+       echo -e "\n" >> $REPOFILE
     fi
-
-    echo -e "gpgcheck=1" >> $REPOFILE
-    echo -e "gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release" >> $REPOFILE
-    echo -e "\n" >> $REPOFILE
 done;
