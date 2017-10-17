@@ -19,5 +19,7 @@ nginx_vhosts:
     server_name: "_"
     root: "/var/www/mirrors"
     state: present
+    extra_parameters: |
+        autoindex on;
 nginx_remove_default_vhost: true
 mirror_ip_address: ''
